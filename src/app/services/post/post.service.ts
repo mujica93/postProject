@@ -12,22 +12,7 @@ export class PostService {
 
   public getListPosts(): Observable<any> {
 
-    const array = [
-      {
-        id: "Pudgy Penguin #1",
-        name: 0.2,
-        description: "https://api.pudgypenguins.io/penguin/image/1"
-      },
-      {
-        id: "Pudgy Penguin #1",
-        name: 0.2,
-        description: "https://api.pudgypenguins.io/penguin/image/1"
-      },
-      {
-        id: "Pudgy Penguin #1",
-        name: 0.2,
-        description: "https://api.pudgypenguins.io/penguin/image/1"
-      },
+    const array: PostsList[] = [
     ]
 
     return of(array).pipe(

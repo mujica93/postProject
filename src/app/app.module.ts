@@ -12,6 +12,7 @@ import { NewPostComponent } from './components/new-post/new-post.component';
 import { SearchPostComponent } from './components/search-post/search-post.component';
 import { ROOT_REDUCERS } from './state/app.state';
 import { EffectsModule } from '@ngrx/effects';
+import { PostEffects } from './state/effects/post.effect';
 
 
 @NgModule({
@@ -26,7 +27,7 @@ import { EffectsModule } from '@ngrx/effects';
     RouterModule,
     StoreModule.forRoot(ROOT_REDUCERS),
     StoreDevtoolsModule.instrument({ name: 'TEST'}),
-    EffectsModule.forRoot([]),
+    EffectsModule.forRoot([PostEffects]),
 
   ],
   providers: [],

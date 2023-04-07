@@ -3,6 +3,7 @@ import { Store } from '@ngrx/store';
 import { loadPost, loadedPost } from './state/actions/table.actions';
 import { PostService } from './services/post/post.service';
 import { PostsList } from 'src/app/model/post.interface';
+import { retrievedPostsList } from './state/actions/post.actions';
 
 @Component({
   selector: 'app-root',
@@ -18,11 +19,10 @@ export class AppComponent implements OnInit{
 
   ngOnInit(): void {
 
-    this.store.dispatch(loadPost());
-    this.postSrv.getListPosts().subscribe((resp:PostsList[])=>{
-      this.store.dispatch(loadedPost(
-        {posts:resp}
-      ))
+    // this.store.dispatch(loadPost());
+    this.postSrv.getListPosts().subscribe((resp)=>{
+      this.store.dispatch(retrievedPostsList({posts: resp}))
     })
+
   }
 }

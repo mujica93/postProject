@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable, observable } from 'rxjs';
 import { Store } from '@ngrx/store';
-import { selectorPostsList } from 'src/app/state/selectors/post.selector';
+import { selectPost} from 'src/app/state/selectors/post.selector';
 import { AppState } from 'src/app/state/app.state';
 
 @Component({
@@ -15,12 +15,12 @@ export class TableComponent implements OnInit{
 
   constructor(private store:Store<AppState> ) {
 
-
+    this.posts$ = this.store.select(selectPost)
 
   }
 
   ngOnInit(): void {
-    this.posts$ = this.store.select(selectorPostsList)
+
   }
 
   public deletePost(id:number){
