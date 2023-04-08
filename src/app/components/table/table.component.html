@@ -1,31 +1,53 @@
-<table class="table table-bordered">
-  <thead>
-      <tr>
-        <th>
-          Name
-        </th>
-        <th>
-          Descriptión
-        </th>
-        <th>
-          Acción
-        </th>
-      </tr>
 
-  </thead>
-  <tbody>
-    <tr *ngFor="let post of posts$ | async; let i = index">
-      <td>
-        {{post.name}}
-      </td>
-      <td>
-        {{post.description}}
-      </td>
-      <td>
-        <button class="btn btn-danger" (click)="deletePost(i)">
-          Eliminar
+<div class="container">
+  <div class="row">
+
+    <div class="col-12 row mb-4">
+      <div class="col-6">
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Filtro de nombre"
+          [(ngModel)]="filterTxt"
+        />
+      </div>
+      <div class="col-6" style="text-align: right">
+        <button class="btn btn-primary" style="color: white" (click)="searchPost()">
+          Buscar
         </button>
-      </td>
-    </tr>
-  </tbody>
-</table>
+      </div>
+    </div>
+
+    <div class="col-12">
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Descriptión</th>
+            <th>Acción</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let post of posts$ | async; let i = index">
+            <td>
+              {{ post.name }}
+            </td>
+            <td>
+              {{ post.description }}
+            </td>
+            <td>
+              <button class="btn btn-danger" (click)="postDelete(i)">Eliminar</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+</div>
+
+
+
+
+
+

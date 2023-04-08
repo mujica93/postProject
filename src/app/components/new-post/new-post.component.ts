@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { PostsList } from 'src/app/model/post.interface';
-import { newPost } from 'src/app/state/actions/post.actions';
+import { PostsList } from 'src/app/models/post.interface';
+import { PostService } from 'src/app/services/post/post.service';
 
 @Component({
   selector: 'app-new-post',
@@ -9,7 +9,13 @@ import { newPost } from 'src/app/state/actions/post.actions';
   styleUrls: ['./new-post.component.css']
 })
 export class NewPostComponent implements OnInit{
-  constructor(private store: Store) {
+
+  newPostForm: PostsList = {
+    name: "",
+    description: ""
+  }
+
+  constructor(private store: Store, private postSrv: PostService) {
 
   }
 
@@ -18,14 +24,11 @@ export class NewPostComponent implements OnInit{
   }
 
   public addPost(){
-    const addPost: PostsList = {
-      id: 4,
-      name: "COMO ESTAS?",
-      description: "Saludos cordiales"
-    }
-
-    this.store.dispatch(newPost({post:addPost}))
-
+    this.postSrv.addPost(this.newPostForm).status == true ?
+    this.newPostForm = {
+      name: "",
+      description: ""
+      } : "" ;
   }
 
 }

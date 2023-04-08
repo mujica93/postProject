@@ -1,0 +1,11 @@
+.container{
+  width: 550px;
+}
+
+.table-bordered,.form-control{
+  border: black solid 1px;
+}
+
+.table{
+  text-align: center;
+}

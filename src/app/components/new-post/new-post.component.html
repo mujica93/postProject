@@ -1,13 +1,17 @@
-<div class="row mb-4">
-  <div class="col-4">
-    <input type="text" class="form-control" placeholder="Nombre">
-  </div>
-  <div class="col-4">
-    <input type="text" class="form-control" placeholder="Descripción">
-  </div>
-  <div class="col-4" style="text-align: right;">
-    <button class="btn btn-success" (click)="addPost()">
-      Crear
-    </button>
+
+<div class="container mt-4">
+  <div class="row mb-4">
+    <div class="col-4">
+      <input type="text" class="form-control" placeholder="Nombre" [(ngModel)]="newPostForm.name">
+    </div>
+    <div class="col-4">
+      <input type="text" class="form-control" placeholder="Descripción" [(ngModel)]="newPostForm.description">
+    </div>
+    <div class="col-4" style="text-align: right;">
+      <button class="btn btn-success" (click)="addPost()">
+        Crear
+      </button>
+    </div>
   </div>
 </div>
+
