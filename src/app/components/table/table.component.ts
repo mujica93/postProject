@@ -1,10 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable, observable } from 'rxjs';
+import { Observable } from 'rxjs';
 import { Store } from '@ngrx/store';
 import { selectPost } from 'src/app/state/selectors/post.selector';
 import { AppState } from 'src/app/state/app.state';
-import { deletePost } from 'src/app/state/actions/post.actions';
-import { retrievedPostsList } from '../../state/actions/post.actions';
 import { PostService } from '../../services/post/post.service';
 
 @Component({
@@ -24,10 +22,10 @@ export class TableComponent implements OnInit {
   ngOnInit(): void {}
 
   postDelete(index: number) {
-    this.store.dispatch(deletePost({ index }));
+    this.postSrv.deletePost(index);
   }
 
-  async searchPost() {
-    console.log(await this.postSrv.searchPost(this.filterTxt));
+  searchPost() {
+    this.postSrv.searchPost(this.filterTxt)
   }
 }

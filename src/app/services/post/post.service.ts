@@ -1,14 +1,13 @@
 import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable, delay, of } from 'rxjs';
-import { PostsList, SearchPost } from 'src/app/models/post.interface';
+import { PostsList } from 'src/app/models/post.interface';
 import {
   deletePost,
   newPost,
   searchPost,
 } from 'src/app/state/actions/post.actions';
 import { ResponseInterface } from 'src/app/models/response.interface';
-import { selectPost } from 'src/app/state/selectors/post.selector';
 import { retrievedPostsList } from '../../state/actions/post.actions';
 
 @Injectable({
@@ -77,9 +76,11 @@ export class PostService {
 
     //eliminamos del localstorage el post
     let posts = localStorage.getItem('posts');
+    console.log(posts);
     if (posts) {
       let postsParsed = JSON.parse(posts);
       postsParsed.splice(index, 1);
+      console.log(postsParsed);
       localStorage.setItem('posts', JSON.stringify(postsParsed));
     }
 
