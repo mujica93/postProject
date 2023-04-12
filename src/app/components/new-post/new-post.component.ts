@@ -24,6 +24,11 @@ export class NewPostComponent implements OnInit{
   }
 
   public addPost(){
+
+    if (this.newPostForm.name === "") return;
+
+    if (this.newPostForm.description === "") return;
+
     this.postSrv.addPost(this.newPostForm).status == true ?
     this.newPostForm = {
       name: "",
