@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Store } from '@ngrx/store';
 import { PostsList } from 'src/app/models/post.interface';
 import { PostService } from 'src/app/services/post/post.service';
 
@@ -15,7 +14,7 @@ export class NewPostComponent implements OnInit{
     description: ""
   }
 
-  constructor(private store: Store, private postSrv: PostService) {
+  constructor(private postSrv: PostService) {
 
   }
 
